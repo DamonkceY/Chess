@@ -12,7 +12,7 @@ function getLegalMovePawn(e, arr) {
   switch (e.piece.color) {
     case 8:
       if ([48, 49, 50, 51, 52, 53, 54, 55].includes(e.position)) {
-        if (!Board[e.position - 16]) {
+        if (!Board[e.position - 16] && !Board[e.position - 8]) {
           arr.push(e.position - 16);
         }
       }
@@ -42,7 +42,7 @@ function getLegalMovePawn(e, arr) {
 
     case 16:
       if ([8, 9, 10, 11, 12, 13, 14, 15].includes(e.position)) {
-        if (!Board[e.position + 16]) {
+        if (!Board[e.position + 16] && !Board[e.position + 8]) {
           arr.push(e.position + 16);
         }
       }
