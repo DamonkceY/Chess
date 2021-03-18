@@ -60,13 +60,13 @@ export default {
           if (e.position == mv.position) {
             setNullSuggestedMoves(this);
             localStorage.removeItem("toMove");
-          } else if (this.legal.includes(e.position)) {
+          } else if (this.legal.includes(e.position) && this.stubMove(mv, e)) {
             this.makeMove(mv, e);
             watch_men = WatchMen();
           } else {
             localStorage.removeItem("toMove");
           }
-        } else if (this.legal.includes(e.position)) {
+        } else if (this.legal.includes(e.position) && this.stubMove(mv, e)) {
           this.makeMove(mv, e);
           watch_men = WatchMen();
         } else {
@@ -89,6 +89,30 @@ export default {
 
       if (watch_men.WhitePiecesLegalMoves.includes(watch_men.blackKing)) {
         this.$refs.square[watch_men.blackKing].style = "border:solid red;";
+      }
+    },
+    stubMove(mv, e) {
+      let oldMove = Board[mv.position];
+      let newMove = Board[e.position];
+      Board[mv.position] = null;
+      Board[e.position] = mv.piece;
+      let wm = WatchMen();
+      Board[mv.position] = oldMove;
+      Board[e.position] = newMove;
+      if (this.turn == 8) {
+        if (wm.BlackPiecesLegalMoves.includes(wm.whiteKing)) {
+          return false;
+        } else {
+          this.$refs.square[wm.whiteKing].style = null;
+          return true;
+        }
+      } else {
+        if (wm.WhitePiecesLegalMoves.includes(wm.blackKing)) {
+          return false;
+        } else {
+          this.$refs.square[wm.blackKing].style = null;
+          return true;
+        }
       }
     },
     makeMove(mv, e) {

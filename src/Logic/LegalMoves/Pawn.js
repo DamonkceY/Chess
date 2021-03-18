@@ -35,10 +35,9 @@ function getLegalMovePawn(e, arr) {
         arr.push(e.position - 8);
       }
 
-      // if (Board[e.position - 8]) {
-      //   arr.pop();
-      //   sudo.$refs.square[e.position - 8].style = null;
-      // }
+      if (Board[e.position - 8]) {
+        arr.pop();
+      }
       break;
 
     case 16:
@@ -66,10 +65,9 @@ function getLegalMovePawn(e, arr) {
         arr.push(e.position + 8);
       }
 
-      // if (Board[e.position + 8]) {
-      //   arr.pop();
-      //   sudo.$refs.square[e.position + 8].style = null;
-      // }
+      if (Board[e.position + 8]) {
+        arr.pop();
+      }
       break;
 
     default:
