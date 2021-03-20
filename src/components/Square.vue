@@ -1,8 +1,6 @@
 <template>
   <div style="width:100px; height:100px;" :class="color" @click="clicked">
     <!-- {{ position }} -->
-
-    <!-- :style="style" -->
     <img
       :style="style"
       :class="rotate"

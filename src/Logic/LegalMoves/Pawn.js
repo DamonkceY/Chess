@@ -8,7 +8,7 @@ function enemyPiece(e, pos, array) {
 
 function getLegalMovePawn(e, arr) {
   let x = NumberSquareToEdge[e.position];
-
+  // console.log(x);
   switch (e.piece.color) {
     case 8:
       if ([48, 49, 50, 51, 52, 53, 54, 55].includes(e.position)) {
@@ -18,13 +18,15 @@ function getLegalMovePawn(e, arr) {
       }
       if (
         Board[e.position - 7] != null &&
-        Board[e.position - 7].color != e.piece.color
+        Board[e.position - 7].color != e.piece.color &&
+        x.right != 0
       ) {
         enemyPiece(e, e.position - 7, arr);
       }
       if (
         Board[e.position - 9] != null &&
-        Board[e.position - 9].color != e.piece.color
+        Board[e.position - 9].color != e.piece.color &&
+        x.left != 0
       ) {
         enemyPiece(e, e.position - 9, arr);
       }
@@ -48,13 +50,15 @@ function getLegalMovePawn(e, arr) {
       }
       if (
         Board[e.position + 7] != null &&
-        Board[e.position + 7].color != e.piece.color
+        Board[e.position + 7].color != e.piece.color &&
+        x.left != 0
       ) {
         enemyPiece(e, e.position + 7, arr);
       }
       if (
         Board[e.position + 9] != null &&
-        Board[e.position + 9].color != e.piece.color
+        Board[e.position + 9].color != e.piece.color &&
+        x.right != 0
       ) {
         enemyPiece(e, e.position + 9, arr);
       }
