@@ -1,5 +1,11 @@
 # chess
 
+## Project Online
+```
+https://free-dev-chess.netlify.app/
+```
+
+
 ## Project setup
 ```
 npm install
