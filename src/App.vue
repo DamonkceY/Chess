@@ -23,6 +23,12 @@
         ></square>
       </div>
     </div>
+    <div style="margin-top: 10px;">
+        <h3>This game was made by Med Chouiref (i have a problem with styles &#128516; &#128516; &#128516;)</h3>
+        <a target="_blank" href="https://linkedin.com/in/med-chouiref-7a4957186"> LinkedIn</a>
+        <br>
+        <a target="_blank" href="https://github.com/DamonkceY/Chess">GitHub</a>
+      </div>
   </div>
 </template>
 
@@ -52,7 +58,7 @@ export default {
   mounted() {
     localStorage.removeItem("toMove");
     this.turn = 8;
-    this.initialize(null,0);
+    this.initialize(null, 0);
   },
   watch: {
     move() {
